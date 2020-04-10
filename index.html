@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Calls</title>
+  </head>
+  <body>
+    <img src="" id="rainbow" alt="" />
+
+    <script>
+      getImage()
+        .then(res => console.log('yay'))
+        .catch(err => console.log(err.message));
+
+      async function getImage() {
+        const response = await fetch('rainbow.jpg');
+        const blob = await response.blob();
+        document.getElementById('rainbow').src = URL.createObjectURL(blob);
+      }
+    </script>
+  </body>
+</html>
